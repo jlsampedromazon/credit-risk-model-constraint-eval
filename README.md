@@ -27,21 +27,21 @@ Assesses the reliability of the model logic under constraints.
 This project leverages a combination of statistical modeling, machine learning frameworks, and data orchestration tools to compare constrained vs. unconstrained performance.
 
 1. Core Modeling & Algorithms
-- Scikit-Learn: Used for Logistic Regression and Decision Tree implementations, including GridSearchCV for hyperparameter tuning.
-
-- XGBoost: Primary gradient boosting framework, utilizing the native monotone_constraints parameter for constrained modeling.
-
-- Statsmodels: For detailed statistical summaries and p-value analysis in Logistic Regression.
+  - Scikit-Learn: Used for Logistic Regression and Decision Tree implementations, including GridSearchCV for hyperparameter tuning.
+  
+  - XGBoost: Primary gradient boosting framework, utilizing the native monotone_constraints parameter for constrained modeling.
+  
+  - Statsmodels: For detailed statistical summaries and p-value analysis in Logistic Regression.
 
 2. Data Processing & Analytics
-- Pandas & NumPy: Core libraries for data manipulation and feature engineering.
+  - Pandas & NumPy: Core libraries for data manipulation and feature engineering.
 
 3. Visualization & Reporting
-- Matplotlib & Seaborn: For generating ROC/PR curves and feature importance plots.
+  - Matplotlib & Seaborn: For generating ROC/PR curves and feature importance plots.
 
-- SHAP (SHapley Additive exPlanations): To visualize how constraints shift feature contributions between models.
+  - SHAP (SHapley Additive exPlanations): To visualize how constraints shift feature contributions between models.
 
 4. Environment & Deployment
-- Python 3.9+: Base programming language.
+  - Python 3.9+: Base programming language.
 
-- Jupyter Notebooks: For exploratory data analysis (EDA) and iterative model testing.
+  - Jupyter Notebooks: For exploratory data analysis (EDA) and iterative model testing.
