@@ -1,10 +1,10 @@
 # PROJECT ABSTRACT
 
-## 1. Overview (Context & Motivation)
+## 1. Context & Motivation
 
 Credit risk models are central to consumer lending, determining whether applicants are approved for credit and under what terms. In regulated banking environments, these models must satisfy strict governance requirements related to interpretability, transparency, and economic coherence. To ensure that model outputs are explainable and consistent with financial intuition, institutions often impose structural constraints on predictive models. Two commonly used constraints are enforcing monotonic relationships between certain financial variables and default risk, and restricting models to additive structures that allow predictions to be decomposed into independent feature contributions. While these constraints improve regulatory acceptance and model interpretability, they may reduce the predictive flexibility of machine learning models. Understanding the trade-off between predictive performance and governance compliance is therefore an important challenge in applied machine learning for credit risk.
 
-## 2. Research Question & Expected (Novel) Contribution
+## 2. Research Question & Expected Contributions
 
 This project investigates the following research question:
 
@@ -20,7 +20,7 @@ We will use the same dataset and feature set to train each model, comprised only
 
 The expected contribution is an empirical comparison of predictive performance between compliance-constrained versus unconstrained implementations across the three model architectures, providing insight into the cost of compliance in credit assessment.
 
-## 3. Regulatory Constraints to be Simulated (Additive + Monotonicity)
+## 3. Regulatory Constraints to be Simulated
 
 Two core structural constraints typically imposed by regulators on credit approval models within commercial banking will be simulated:
 
@@ -51,69 +51,36 @@ Only variables that are generally acceptable in regulated credit underwriting mo
 
 Selected Features
 
-$$
-\begin{array}{|l|l|}
-\hline
-\textbf{Feature Name} & \textbf{Description} \\
-\hline
-\text{AMT\_INCOME\_TOTAL} & \text{Total annual income reported by the applicant.} \\
-\hline
-\text{AMT\_CREDIT} & \text{Total amount of credit requested in the loan application.} \\
-\hline
-\text{AMT\_ANNUITY} & \text{Periodic repayment amount required for the loan (loan installment).} \\
-\hline
-\text{AMT\_GOODS\_PRICE} & \text{Price of the goods being financed by the loan.} \\
-\hline
-\text{DAYS\_BIRTH} & \text{Applicant age (measured in days prior to the application date.} \\
-\hline
-\text{DAYS\_EMPLOYED} & \text{Number of days the applicant has been employed by their current employer).} \\
-\hline
-\text{DAYS\_REGISTRATION} & \text{Number of days since the applicant registered at their current address.} \\
-\hline
-\text{DAYS\_ID\_PUBLISH} & \text{Number of days since the applicant’s identity document was issued or updated.} \\
-\hline
-\text{OWN\_CAR\_AGE} & \text{Age of the applicant’s car, which can proxy asset ownership.} \\
-\hline
-\text{CNT\_CHILDREN} & \text{Number of children financially dependent on the applicant.} \\
-\hline
-\text{CNT\_FAM\_MEMBERS} & \text{Total number of family members in the applicant’s household.} \\
-\hline
-\text{FLAG\_OWN\_CAR} & \text{Indicator showing whether the applicant owns a car.} \\
-\hline
-\text{FLAG\_OWN\_REALTY} & \text{Indicator showing whether the applicant owns real estate.} \\
-\hline
-\text{NAME\_INCOME\_TYPE} & \text{Type of income source (e.g., working, pensioner, business).} \\
-\hline
-\text{NAME\_EDUCATION\_TYPE} & \text{Highest education level attained by the applicant.} \\
-\hline
-\text{NAME\_FAMILY\_STATUS} & \text{Marital or family status of the applicant.} \\
-\hline
-\text{NAME\_HOUSING\_TYPE} & \text{Applicant housing situation (owning, renting, etc.).} \\
-\hline
-\text{OCCUPATION\_TYPE} & \text{Occupation category of the applicant.} \\
-\hline
-\text{ORGANIZATION\_TYPE} & \text{Industry or type of organization where the applicant works.} \\
-\hline
-\text{EXT\_SOURCE\_1} & \text{External credit risk score from a third-party provider.} \\
-\hline
-\text{EXT\_SOURCE\_2} & \text{External credit risk score from another independent provider.} \\
-\hline
-\text{EXT\_SOURCE\_3} & \text{External credit risk score from a third provider.} \\
-\hline
-\text{AMT\_REQ\_CREDIT\_BUREAU\_HOUR} & \text{Number of credit bureau inquiries in the last hour.} \\
-\hline
-\text{AMT\_REQ\_CREDIT\_BUREAU\_DAY} & \text{Number of credit bureau inquiries in the last day.} \\
-\hline
-\text{AMT\_REQ\_CREDIT\_BUREAU\_WEEK} & \text{Number of credit bureau inquiries in the last week.} \\
-\hline
-\text{AMT\_REQ\_CREDIT\_BUREAU\_MON} & \text{Number of credit bureau inquiries in the last month.} \\
-\hline
-\text{AMT\_REQ\_CREDIT\_BUREAU\_QRT} & \text{Number of credit bureau inquiries in the last quarter.} \\
-\hline
-\text{AMT\_REQ\_CREDIT\_BUREAU\_YEAR} & \text{Number of credit bureau inquiries in the last year.} \\
-\hline
-\end{array}
-$$
+| Feature Name | Description |
+|--------------|-------------|
+| AMT_INCOME_TOTAL | Total annual income reported by the applicant. |
+| AMT_CREDIT | Total amount of credit requested in the loan application. |
+| AMT_ANNUITY | Periodic repayment amount required for the loan (loan installment). |
+| AMT_GOODS_PRICE | Price of the goods being financed by the loan. |
+| DAYS_BIRTH | Applicant age (measured in days prior to the application date. |
+| DAYS_EMPLOYED | Number of days the applicant has been employed by their current employer). |
+| DAYS_REGISTRATION | Number of days since the applicant registered at their current address. |
+| DAYS_ID_PUBLISH | Number of days since the applicant’s identity document was issued or updated. |
+| OWN_CAR_AGE | Age of the applicant’s car, which can proxy asset ownership. |
+| CNT_CHILDREN | Number of children financially dependent on the applicant. |
+| CNT_FAM_MEMBERS | Total number of family members in the applicant’s household. |
+| FLAG_OWN_CAR | Indicator showing whether the applicant owns a car. |
+| FLAG_OWN_REALTY | Indicator showing whether the applicant owns real estate. |
+| NAME_INCOME_TYPE | Type of income source (e.g., working, pensioner, business). |
+| NAME_EDUCATION_TYPE | Highest education level attained by the applicant. |
+| NAME_FAMILY_STATUS | Marital or family status of the applicant. |
+| NAME_HOUSING_TYPE | Applicant housing situation (owning, renting, etc.). |
+| OCCUPATION_TYPE | Occupation category of the applicant. |
+| ORGANIZATION_TYPE | Industry or type of organization where the applicant works. |
+| EXT_SOURCE_1 | External credit risk score from a third-party provider. |
+| EXT_SOURCE_2 | External credit risk score from another independent provider. |
+| EXT_SOURCE_3 | External credit risk score from a third provider. |
+| AMT_REQ_CREDIT_BUREAU_HOUR | Number of credit bureau inquiries in the last hour. |
+| AMT_REQ_CREDIT_BUREAU_DAY | Number of credit bureau inquiries in the last day. |
+| AMT_REQ_CREDIT_BUREAU_WEEK | Number of credit bureau inquiries in the last week. |
+| AMT_REQ_CREDIT_BUREAU_MON | Number of credit bureau inquiries in the last month. |
+| AMT_REQ_CREDIT_BUREAU_QRT | Number of credit bureau inquiries in the last quarter. |
+| AMT_REQ_CREDIT_BUREAU_YEAR | Number of credit bureau inquiries in the last year. |
 
 Monotonic constraints will be applied to selected variables where the direction of relationship with default risk is economically well understood, such as income, age, employment duration, and credit bureau inquiry counts.
 
@@ -193,27 +160,10 @@ Environment & Deployment
 
 ## 8. Work Plan
 
-$$
-\begin{array}{|l|l|}
-\hline
-\textbf{Week} & \textbf{Tasks} \\
-\hline
-\text{Week 3/16} &
-\begin{array}{l}
-\text{Pre-processing of dataset (cleaning and feature selection)} \\
-\text{Train unconstrained versions of the models} \\
-\text{Log Reg: Ankita} \\
-\text{CART: Jianyu} \\
-\text{XGBoost: Jose}
-\end{array} \\
-\hline
-\text{Week 3/23} & \text{Train constrained versions of the models} \\
-\hline
-\text{Week 3/30} & \text{Run experiment and evaluate results} \\
-\hline
-\text{Week 4/6} & \text{Write-up / presentation} \\
-\hline
-\text{4/13 to 4/15} & \text{Buffer} \\
-\hline
-\end{array}
-$$
+| Week | Tasks |
+|-----|------|
+| Week 3/16 | Pre-processing of dataset (cleaning and feature selection)<br>Train unconstrained versions of the models<br>Log Reg: Ankita<br>CART: Jianyu<br>XGBoost: Jose |
+| Week 3/23 | Train constrained versions of the models |
+| Week 3/30 | Run experiment and evaluate results |
+| Week 4/6 | Write-up / presentation |
+| 4/13 to 4/15 | Buffer |
