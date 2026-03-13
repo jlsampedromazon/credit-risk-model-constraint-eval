@@ -86,31 +86,31 @@ Monotonic constraints will be applied to selected variables where the direction 
 
 ## 5. Model Architectures (Constrained & Unconstrained)
 
-Three model architectures commonly used in credit risk modeling will be evaluated.
+Three model architectures commonly used in credit risk modeling will be evaluated:
 
-Logistic Regression
+### Logistic Regression
 
-Unconstrained:
+##### Unconstrained:
 Standard logistic regression trained on the selected features.
 
-Constrained:
+##### Constrained:
 Scorecard-style logistic regression with monotonic binning and additive structure.
 
-Decision Trees
+### Decision Tree (CART)
 
-Unconstrained:
+##### Unconstrained:
 Standard CART decision tree capable of learning nonlinear feature interactions.
 
-Constrained:
+##### Constrained:
 Monotonic decision tree with restricted depth and splits that preserve monotonic relationships.
 
-Gradient Boosted Trees (XGBoost)
+### Gradient Boosted Trees (XGBoost)
 
 Unconstrained:
 Standard XGBoost model allowing flexible nonlinear interactions between features.
 
-Constrained:
-Monotonic XGBoost implementation enforcing economically consistent relationships between selected variables and predicted risk.
+##### Constrained:
+We implement monotonicity constraints using XGBoost’s built-in monotone_constraints parameter, which forces the model predictions to move monotonically with respect to selected features. Otherwise, this version uses the same model and hyperparameters as the unconstrained version.
 
 ## 6. Evaluation & Metrics: Constrained vs. Unconstrained Performance
 This section outlines the framework for comparing "Unconstrained" and "Constrained" versions of Logistic Regression, Decision Trees, and XGBoost
