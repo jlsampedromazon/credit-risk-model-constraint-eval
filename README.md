@@ -1,4 +1,5 @@
 # Credit Risk Model Constraint Evaluation
+J. Qiu, A. Samantaray, J. Sampedro Mazon
 
 ## Overview
 
