@@ -159,3 +159,14 @@ These metrics evaluate how effectively the models differentiate between "Good" a
 
 * Python 3.12+
 * Jupyter Notebooks
+
+##Main Contributors:
+Jose Sampedro Mazon
+Jianyu Qiu
+Ankita Samantaray
+
+
+—-
+Licence
+All rights reserved.
+  
