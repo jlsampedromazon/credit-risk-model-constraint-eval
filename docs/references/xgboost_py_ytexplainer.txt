@@ -1,0 +1,3 @@
+XGBOOST (Jose)
+- XGBoost Paper: https://arxiv.org/pdf/1603.02754
+- XGBoost in Python Explainer: https://www.youtube.com/watch?v=aLOQD66Sj0g
