@@ -1,5 +1,7 @@
 # Raw data files and other legacy
 archive/
+data/
+output/
 
 # Python
 __pycache__/
@@ -33,4 +35,4 @@ dist/
 .DS_Store
 .idea/
 .vscode/
-data/
+
