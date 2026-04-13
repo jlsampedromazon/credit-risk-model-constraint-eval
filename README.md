@@ -35,7 +35,7 @@ Placeholder — repository structure may evolve as the project progresses.
 
 ## Dataset
 
-The project uses the Home Credit Default Risk dataset, sourced from Kaggle, which contains anonymized consumer loan application data provided by the non-bank lender Home Credit. The analysis focuses on the `application_train.csv` dataset, which contains approximately 307,000 loan applications with a binary target variable indicating whether the borrower defaulted. We note that in Kaggle the dataset has already been split. We believe the train split in Kaggle is both sufficient and manageable for our purposes.
+The project uses the Home Credit Default Risk dataset, sourced from Kaggle, which contains anonymized consumer loan application data provided by the non-bank lender Home Credit. The analysis focuses on the `application_train.csv` dataset, which contains approximately 307,000 loan applications with a binary target variable indicating whether the borrower defaulted. The analysis focuses on the application_train.csv table from the Home Credit Default Risk dataset. A shared preprocessing pipeline cleans the data, standardizes selected variables, creates external-score missingness flags, and produces deterministic stratified 70/15/15 train, validation, and test splits for all downstream model notebooks.
 
 Dataset source:
 
@@ -112,7 +112,7 @@ Monotonic decision tree with restricted depth and splits that preserve monotonic
 Standard XGBoost model allowing flexible nonlinear interactions between features.
 
 **Constrained**
-We implement monotonicity constraints using python library XGBoost’s built-in `monotone_constraints` parameter, which forces the model predictions to move monotonically with respect to selected features. Otherwise, this version uses the same model and hyperparameters as the unconstrained version.
+The constrained XGBoost branch applies monotonicity constraints to selected numeric variables and approximates additivity through singleton interaction constraints that prevent cross-feature interactions. This branch intentionally retains one-hot encoding for auditability and is tuned within its own constrained search space rather than simply reusing the final unconstrained hyperparameters.
 
 ---
 
@@ -129,11 +129,8 @@ These metrics evaluate how effectively the models differentiate between "Good" a
 * K-S Statistic
 * Brier Score
 
-### Stability & Compliance
-
-* PSI (Population Stability Index)
-* Monotonicity Rate
-* Feature Importance Alignment
+### Common evaluation framework
+All model variants are compared primarily using PR-AUC, ROC-AUC, KS statistic, and Brier score. PR-AUC is the primary selection metric because default is the minority class. The final constrained and unconstrained benchmarks are also compared through business operating-point views, including fixed approval-rate and fixed observed bad-rate analyses.
 
 ---
 
@@ -143,7 +140,6 @@ These metrics evaluate how effectively the models differentiate between "Good" a
 
 * Scikit-Learn
 * XGBoost
-* Statsmodels
 
 ### Data Processing & Analytics
 
@@ -153,7 +149,6 @@ These metrics evaluate how effectively the models differentiate between "Good" a
 ### Visualization & Reporting
 
 * Matplotlib
-* SHAP
 
 ### Environment & Deployment
 
@@ -169,4 +164,4 @@ Ankita Samantaray
 —-
 Licence
 All rights reserved.
-  
+
