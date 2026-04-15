@@ -112,7 +112,7 @@ Unconstrained:
 Standard XGBoost model allowing flexible nonlinear interactions between features.
 
 ##### Constrained:
-We implement monotonicity constraints using XGBoost’s built-in monotone_constraints parameter, which forces the model predictions to move monotonically with respect to selected features. Otherwise, this version uses the same model and hyperparameters as the unconstrained version.
+The constrained XGBoost branch applies monotonicity constraints to selected numeric variables and approximates additivity through singleton interaction constraints that prevent cross-feature interactions. This branch intentionally retains one-hot encoding for auditability and is tuned within its own constrained search space rather than simply reusing the final unconstrained hyperparameters.
 
 ## 6. Evaluation & Metrics: Constrained vs. Unconstrained Performance
 This section outlines the framework for comparing "Unconstrained" and "Constrained" versions of Logistic Regression, Decision Trees, and XGBoost
@@ -128,44 +128,25 @@ This section outlines the framework for comparing "Unconstrained" and "Constrain
 
 - Brier Score: Evaluates the accuracy of the raw Probability of Default (PD) estimates.
 
-### Stability & Compliance
-Assesses the reliability of the model logic under constraints.
-
-- PSI (Population Stability Index): Monitors shifts in score distributions over time.
-
-- Monotonicity Rate: Measures the percentage of features (e.g., Income) that maintain a logical, one-way relationship with risk.
-
-- Feature Importance Alignment: Spearman’s Rank Correlation between the feature rankings of the two model versions to detect "logic shifts."
+### Common evaluation framework
+All model variants are compared primarily using PR-AUC, ROC-AUC, KS statistic, and Brier score. PR-AUC is the primary selection metric because default is the minority class. The final constrained and unconstrained benchmarks are also compared through business operating-point views, including fixed approval-rate and fixed observed bad-rate analyses.
 
 ## 7. Tech Stack
 This project leverages a combination of statistical modeling, machine learning frameworks, and data orchestration tools to compare constrained vs. unconstrained performance.
 
 Core Modeling & Algorithms
-  - Scikit-Learn: Used for Logistic Regression and Decision Tree implementations, including GridSearchCV for hyperparameter tuning.
+  - Scikit-Learn: Used for Logistic Regression and Decision Tree implementations, and evaluation metrics.
 
   - XGBoost: Primary gradient boosting framework, utilizing the native monotone_constraints parameter for constrained modeling.
-
-  - Statsmodels: For detailed statistical summaries and p-value analysis in Logistic Regression.
 
 Data Processing & Analytics
   - Pandas & NumPy: Core libraries for data manipulation and feature engineering.
 
 Visualization & Reporting
-  - Matplotlib & Seaborn: For generating ROC/PR curves and feature importance plots.
+  - Matplotlib: For generating ROC/PR curves and feature importance plots.
 
-  - SHAP (SHapley Additive exPlanations): To visualize how constraints shift feature contributions between models.
 
 Environment & Deployment
   - Python 3.9+: Base programming language.
 
   - Jupyter Notebooks: For exploratory data analysis (EDA) and iterative model testing.
-
-## 8. Work Plan
-
-| Week | Tasks |
-|-----|------|
-| Week 3/16 | Pre-processing of dataset (cleaning and feature selection)<br>Train unconstrained versions of the models<br>Log Reg: Ankita<br>CART: Jianyu<br>XGBoost: Jose |
-| Week 3/23 | Train constrained versions of the models |
-| Week 3/30 | Run experiment and evaluate results |
-| Week 4/6 | Write-up / presentation |
-| 4/13 to 4/15 | Buffer |
